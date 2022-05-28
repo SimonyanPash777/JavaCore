@@ -9,15 +9,15 @@ public class TwoDAgain {
         twoD[3] = new int[4];
         int i, j, k = 0;
         for (i = 0; i < 4; i++) {
-            for (j = 0; j < i + 1; j++)
-                twoD[i][j] = k;
-            k++;
+            for (j = 0; j <= i; j++)
+                twoD[i][j] = k++;
+            }
 
-            for (i = 0; i < 4; i++)
-                for (j = 0; j < i + 1; j++)
-
-            System.out.println(twoD[i][j] + "");
-            System.out.println();
+            for (i = 0; i < 4; i++) {
+                for (j = 0; j <= i; j++) {
+                    System.out.print(twoD[i][j] + " ");
+                }
+                    System.out.println();
+            }
         }
     }
-}
