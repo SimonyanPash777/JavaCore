@@ -26,12 +26,12 @@ public class ArrayUtil {
         System.out.println("Example 4 ");
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0)
-                System.out.println(array[i] + " ");
+                System.out.print(array[i] + " ");
         }
-       int qanak = 0;
+        int qanak = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 == 0)
-             qanak ++;
+                qanak++;
 
         }
 
@@ -39,27 +39,26 @@ public class ArrayUtil {
 
 
         System.out.println("\nExample 5 ");
-        for (int i = 0; i < array.length ; i++) {
+        for (int i = 0; i < array.length; i++) {
             if (array[i] % 2 != 0)
 
                 System.out.println(array[i]);
         }
-       int qanak1 = 0;
-        for (int i = 1; i < array.length ; i++) {
+        int qanak1 = 0;
+        for (int i = 1; i < array.length; i++) {
             if (array[i] % 2 != 0)
-                qanak1 ++;
+                qanak1++;
         }
         System.out.println("կենտերի քանակը հավասար է " + qanak1);
 
         System.out.print("\nExample 6");
         int gumar = 0;
         for (int i = 0; i < array.length; i++) {
-           gumar += array[i];
+            gumar += array[i];
         }
         System.out.println("\nգումարը հավասար է " + gumar);
-double avg = gumar / array.length;
-        System.out.println("\nբաժանում հավասար է " + avg            );
-
+        double avg = gumar / array.length;
+        System.out.println("\nբաժանում հավասար է " + avg);
 
 
     }
