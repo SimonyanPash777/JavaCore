@@ -1,10 +1,8 @@
 package homework.dynamicArray;
 
-import static sun.plugin2.os.windows.OSVERSIONINFOA.size;
-
 public class DynamicArray {
     private int[] array = new int[10];
-    private int size = 0; // massivi erkarutyun
+    private int size = 0; // elementneri qanak
 
     public void add(int value) {
         if (array.length == size) {
@@ -12,8 +10,6 @@ public class DynamicArray {
         }
         array[size++] = value;
     }
-
-    //Գրել մեթոդ delete(int index) որ տանք ինդեքսը, այդ ինդեքսի տակ գտնվող թիվը հեռացնի մասիվից. (նոր մասիվ պետք չէ սարքել)
 
     public void printArray() {
         for (int i = 0; i < size; i++) {
@@ -50,7 +46,7 @@ public class DynamicArray {
     }
 
     public void set(int index, int value) {
-        if (index < array.length) {
+        if (index < size) {
             array[index] = value;
         }
 
