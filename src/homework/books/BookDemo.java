@@ -1,36 +1,38 @@
 package homework.books;
 
+import homework.books.model.Author;
+import homework.books.model.Book;
+import homework.books.storage.AuthorStorage;
+import homework.books.storage.BookStorage;
+
 import java.io.IOException;
 import java.util.Scanner;
 
-import static homework.books.Commands.*;
+import static homework.books.commands.Commands.*;
 
 public class BookDemo {
 
     private static Scanner scanner = new Scanner(System.in);
     private static BookStorage bookStorage = new BookStorage();
+    private static AuthorStorage authorStorage = new AuthorStorage();
 
     public static void main(String[] args) throws IOException {
-        bookStorage.add(new Book("Mtnadzor", "Aksel", "Bakunc", "joxovacu@mail.ru",
-                                 "male", 7500, 145, "Joxovacu"));
+        bookStorage.add(new Book("abu lala mahari", 750, 145, "Joxovacu"));
+        bookStorage.add(new Book("xenty", 8500, 14, "Joxovacu"));
+        bookStorage.add(new Book("verq hayastani", 9500, 15, "Joxovacu"));
+        bookStorage.add(new Book("hayoc lezu", 5500, 45, "Joxovacu"));
+        authorStorage.add(new Author("", "avetiq", "isahakyan", "poem@mail.ru", "male"));
+        authorStorage.add(new Author("", "raffi", "raffi", "vep1@mail.ru", "male"));
+        authorStorage.add(new Author("", "xachatur", "abovyan", "vep2@mail.ru", "male"));
+        authorStorage.add(new Author("", "silva", "kaputikyan", "banastexcutyun@mail.ru", "female"));
 
-        bookStorage.add(new Book("Abu Lala Mahari", "Avetiq", "Isahakyan",  "poem@mail.ru",
-                                 "male", 6800, 57, "Poem"));
-
-        bookStorage.add(new Book("Xenty","Raffi", "",  "vep1@mail.ru",
-                                 "male", 8800, 49, "Vep"));
-
-        bookStorage.add(new Book("Verq Hayastani","Xachatur",  "Abovyan","vep2@mail.ru",
-                                 "male", 9990, 103, "Vep"));
-
-        bookStorage.add(new Book("Hayoc Lezu","Silva",  "Kaputikyan","banastexcutyunn@mail.ru",
-                                 "female", 9790, 13, "Banastexcutyun"));
 
         boolean run = true;
         while (run) {
             System.out.println("please input " + EXIT + " for exit");
             System.out.println("please input " + ADD_BOOK + " for add book");
             System.out.println("please input " + PRINT_ALL_BOOKS + " for print all books");
+            System.out.println("please input " + PRINT_ALL_AUTHORS + " for print all authors");
             System.out.println("please input " + PRINT_BOOKS_AUTHOR_NAME + " for print Books by authorName");
             System.out.println("please input " + PRINT_BOOKS_AUTHOR_SURNAME + " for print Books by authorSurname");
             System.out.println("please input " + PRINT_BOOKS_BY_AUTHOR_EMAIL + " for print Books by authorEmail");
@@ -50,45 +52,77 @@ public class BookDemo {
                 case PRINT_ALL_BOOKS:
                     bookStorage.printAllBooks();
                     break;
+
+                case PRINT_ALL_AUTHORS:
+                    authorStorage.printAllAuthors();
+                    break;
+
                 case PRINT_BOOKS_AUTHOR_NAME:
-                    System.out.println("Please input author name");
-                    String authorName = scanner.nextLine();
-                    bookStorage.printBooksByAuthorName(authorName);
+                    printBooksByAuthorName();
                     break;
+
                 case PRINT_BOOKS_AUTHOR_SURNAME:
-                    System.out.println("Please input author surname");
-                    String surname = scanner.nextLine();
-                    bookStorage.printBooksByAuthorSurname(surname);
+                    printBooksByAuthorSurname();
                     break;
+
                 case PRINT_BOOKS_BY_AUTHOR_EMAIL:
-                    System.out.println("Please input author email");
-                    String email = scanner.nextLine();
-                    bookStorage.printBooksByAuthorEmail(email);
+                    printBooksByAuthorEmail();
                     break;
+
                 case PRINT_BOOKS_BY_AUTHOR_GENDER:
-                    System.out.println("Pleace input MALE or FEMALE");
-                    String male = scanner.nextLine();
-                    String female = scanner.nextLine();
-                    bookStorage.printBooksByAuthorGender(male,female);
-                case PRINT_BOOKS_BY_GENRE:
-                    System.out.println("Please input genere");
-                    String genre = scanner.nextLine();
-                    bookStorage.printBooksByGenre(genre);
+                    printBooksByGenere();
                     break;
+                case PRINT_BOOKS_BY_GENRE:
+                    printBooksByGenere();
+                    break;
+
                 case PRINT_BOOKS_BY_PRICE_RANGE:
-                    System.out.println("Pleace input min price");
-                    String minStr = scanner.nextLine();
-                    System.out.println("Pleace input max price");
-                    String maxStr = scanner.nextLine();
-                    int min = Integer.parseInt(minStr);
-                    int max = Integer.parseInt(maxStr);
-                    bookStorage.printBooksByPriceRange(min,max);
+                    printBooksByPriceRange();
                     break;
 
                 default:
                     System.err.println("Invalid command");
             }
         }
+    }
+
+    private static void printBooksByAuthorName() {
+        System.out.println("Please input author name");
+        String authorName = scanner.nextLine();
+        authorStorage.printBooksByAuthorName(authorName);
+    }
+
+    private static void printBooksByAuthorSurname() {
+        System.out.println("Please input author surname");
+        String surname = scanner.nextLine();
+        authorStorage.printBooksByAuthorSurname(surname);
+    }
+
+    private static void printBooksByAuthorEmail() throws IOException {
+        System.out.println("Please input author email");
+        String email = scanner.nextLine();
+        authorStorage.printBooksByAuthorEmail(email);
+    }
+
+    private static void printBooksByAuthorGender() {
+        System.out.println("Pleace input MALE or FEMALE");
+        String male = scanner.nextLine();
+        String female = scanner.nextLine();
+        authorStorage.printBooksByAuthorGender(male, female);
+    }
+
+    private static void printBooksByGenere() {
+        System.out.println("Please input genere");
+        String genre = scanner.nextLine();
+        bookStorage.printBooksByGenre(genre);
+    }
+
+    private static void printBooksByPriceRange() {
+        System.out.println("Pleace input min price");
+        int min = Integer.parseInt(scanner.nextLine());
+        System.out.println("Pleace input max price");
+        int max = Integer.parseInt(scanner.nextLine());
+        bookStorage.printBooksByPriceRange(min, max);
     }
 
     private static void addBook() {
@@ -100,10 +134,10 @@ public class BookDemo {
         String authorSurname = scanner.nextLine();
         System.out.println("Pleace input author email");
         String email = scanner.nextLine();
-        if (!email.contains("@")){
+        if (!email.contains("@")) {
             System.out.println("Wrong email");
             System.out.println("Please input correct email");
-        }else {
+        } else {
             System.out.println("Pleace input author gender male or female");
             String gender = scanner.nextLine();
             System.out.println("Please input price ");
@@ -114,7 +148,8 @@ public class BookDemo {
             String genre = scanner.nextLine();
 
             int count = Integer.parseInt(countStr);
-            Book book = new Book(title, authorName, authorSurname, email, gender, price, count, genre);
+            Author author = new Author(title, authorName, authorSurname, email, gender);
+            Book book = new Book(title, price, count, genre);
             bookStorage.add(book);
         }
     }
