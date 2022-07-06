@@ -2,7 +2,7 @@ package chapters.chapter9.p1;
 
 public class SamePackage {
 
-    SamePackage() {
+    public SamePackage() {
         Protection p = new  Protection();
         System.out.println("кoнcтpyктop этого же пакета");
         System.out.println("n = " + p.n);

@@ -2,7 +2,7 @@ package chapters.chapter9.p1;
 
 public class Derived extends Protection {
 
-    Derived() {
+   public Derived() {
         System.out.println("кoнcтpyктop подкласс а");
         System.out.println("n = " + n);
 

@@ -2,7 +2,7 @@ package homework.books.model;
 
 public class Author {
 
-    private  String title;
+
     private String authorName;
     private String authorSurName;
     private String email;
@@ -12,17 +12,14 @@ public class Author {
 
     }
 
-    public Author(String title, String authorName, String authorSurName, String email, String gender) {
-        this.title = title;
+    public Author( String authorName, String authorSurName, String email, String gender) {
+
         this.authorName = authorName;
         this.authorSurName = authorSurName;
         this.email = email;
         this.gender = gender;
     }
 
-    public String getTitle() { return title; }
-
-    public void setTitle(String title) { this.title = title; }
 
     public String getName() { return authorName; }
 

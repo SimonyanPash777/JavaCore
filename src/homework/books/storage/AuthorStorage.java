@@ -1,5 +1,6 @@
 package homework.books.storage;
 
+import homework.books.exception.AuthorNotFoundException;
 import homework.books.model.Author;
 
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class AuthorStorage {
     public void printBooksByAuthorName(String authorName) {
         for (int i = 0; i <= size; i++) {
             if (array[i].getName().equals(authorName)) {
-                System.out.println(array[i].getTitle());
+                System.out.println(array[i]);
             }
         }
     }
@@ -45,24 +46,36 @@ public class AuthorStorage {
     public void printBooksByAuthorSurname(String autorSurname) {
         for (int i = 0; i <= size; i++) {
             if (array[i].getSurName().equals(autorSurname)) {
-                System.out.println(array[i].getTitle());
+                System.out.println(array[i]);
             }
         }
     }
 
     public void printBooksByAuthorEmail(String email) throws IOException {
         for (int i = 0; i <= size; i++) {
-            if (array[i].getEmail().equals(email)){
-                System.out.println(array[i].getTitle() + " " + array[i].getName() + " " + array[i].getSurName());
+            if (array[i].getEmail().equals(email)) {
+                System.out.println(array[i] + " " + array[i].getName() + " " + array[i].getSurName());
             }
         }
     }
+
     public void printBooksByAuthorGender(String male, String female) {
         for (int i = 0; i <= size; i++) {
-            if (array[i].getGender().equals(male) || array[i].getGender().equals(female)){
-                System.out.println(array[i].getTitle());
+            if (array[i].getGender().equals(male) || array[i].getGender().equals(female)) {
+                System.out.println(array[i]);
             }
         }
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public Author getAuthorByIndex(int index) throws AuthorNotFoundException{
+        if (index < 0 || index >= size) {
+            throw new  AuthorNotFoundException("There is no Author at" + index + "index");
+        }
+        return array[index];
     }
 
 }
