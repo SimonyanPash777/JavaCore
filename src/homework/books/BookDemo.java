@@ -55,7 +55,9 @@ public class BookDemo implements Commands {
             System.out.println("please input " + PRINT_BOOKS_BY_AUTHOR_GENDER + " for print Books by authorGender");
             System.out.println("please input " + PRINT_BOOKS_BY_GENRE + " for print Books by genre");
             System.out.println("please input " + PRINT_BOOKS_BY_PRICE_RANGE + " for print books by price range");
-        }
+        } else {
+                System.out.println("Wrong login or password");
+            }
             int command = Integer.parseInt(scanner.nextLine());
 
             switch (command) {
