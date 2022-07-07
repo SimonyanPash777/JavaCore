@@ -29,8 +29,22 @@ public class BookDemo implements Commands {
         authorStorage.add(new Author("silva", "kaputikyan", "banastexcutyun@mail.ru", "female"));
 
 
+
+
+
         boolean run = true;
         while (run) {
+            String login, password;
+
+            System.out.println("Please choose LOGIN");
+            login = scanner.nextLine();
+
+            System.out.println("Please choose PASSWORD");
+            password = scanner.nextLine();
+
+            if (login.equals("admin") && password.equals("123456")) {
+                System.out.println("Welcome your accaunt");
+
             System.out.println("please input " + EXIT + " for exit");
             System.out.println("please input " + ADD_BOOK + " for add book");
             System.out.println("please input " + PRINT_ALL_BOOKS + " for print all books");
@@ -41,7 +55,7 @@ public class BookDemo implements Commands {
             System.out.println("please input " + PRINT_BOOKS_BY_AUTHOR_GENDER + " for print Books by authorGender");
             System.out.println("please input " + PRINT_BOOKS_BY_GENRE + " for print Books by genre");
             System.out.println("please input " + PRINT_BOOKS_BY_PRICE_RANGE + " for print books by price range");
-
+        }
             int command = Integer.parseInt(scanner.nextLine());
 
             switch (command) {
