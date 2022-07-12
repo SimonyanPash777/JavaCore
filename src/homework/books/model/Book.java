@@ -15,6 +15,10 @@ public class Book {
         this.genre = genre;
     }
 
+    public Book(String trim, Author author, double price, String genre) {
+
+    }
+
     public Book() {
 
     }

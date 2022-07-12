@@ -8,4 +8,7 @@ public class Comma {
             System.out.println("b = " + b);
         }
     }
+
+    public static void printLoginCommands() {
+    }
 }

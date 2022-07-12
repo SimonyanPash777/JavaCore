@@ -1,5 +1,7 @@
 package homework.books.model;
 
+import homework.books.commands.Gender;
+
 public class Author {
 
 
@@ -8,7 +10,7 @@ public class Author {
     private String email;
     private String gender;
 
-    public Author() {
+    public Author(String trim, String authorSurName, String email, Gender gender) {
 
     }
 
@@ -18,6 +20,10 @@ public class Author {
         this.authorSurName = authorSurName;
         this.email = email;
         this.gender = gender;
+    }
+
+    public Author() {
+
     }
 
 
