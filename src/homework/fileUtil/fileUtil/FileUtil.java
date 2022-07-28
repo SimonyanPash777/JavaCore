@@ -15,22 +15,22 @@ public class FileUtil {
         findLines();
     }
 
-    static void recursionSearch(File directory, String FILE_NAME) {
+    static void recursiaSearch(File directory, String fileName) {
         boolean name;
         File[] files = directory.listFiles();
         for (File file : files) {
-            if (file.isFile() && file.getName().equals(FILE_NAME)) {
+            if (file.isFile() && file.getName().equals(fileName)) {
                 name = true;
                 System.out.println(name);
                 System.out.println(file.getPath());
             } else if (file.isDirectory()) {
-                recursionSearch(file, FILE_NAME);
+                recursiaSearch(file, fileName);
             }
         }
     }
 
 
-    public static void recursia(File directory, String KEYWORD) {
+    public static void recursia(File directory, String keyword) {
 
         String line;
         File[] files = directory.listFiles();
@@ -40,8 +40,8 @@ public class FileUtil {
 
                 try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
                     while ((line = reader.readLine()) != null) {
-                        if (line.contains(KEYWORD)) {
-                            System.out.println("Your KEYWORD have " + file.getName() + " File PATH " + file.getAbsolutePath());
+                        if (line.contains(keyword)) {
+                            System.out.println("Your keyword have " + file.getName() + " File PATH " + file.getAbsolutePath());
                             break;
                         }
                     }
@@ -62,9 +62,9 @@ public class FileUtil {
         String PATH = scanner.nextLine();
         File file = new File(PATH);
         if (file.isDirectory()) {
-            System.out.println("Please input FILE_NAME");
-            String FILE_NAME = scanner.nextLine();
-            recursionSearch(file, FILE_NAME);
+            System.out.println("Please input file name");
+            String fileName = scanner.nextLine();
+            recursiaSearch(file, fileName);
             if (!file.getName().equals(PATH)) {
                 System.err.println("WRONG FAIL NAME");
                 fileSearch();
@@ -102,11 +102,11 @@ public class FileUtil {
     // 2 - keyword - ինչ որ բառ
     // տալու ենք txt ֆայլի տեղը, ու ինչ որ բառ, ինքը տպելու է էն տողերը, որտեղ գտնի էդ բառը։
     static void findLines() {
-        System.out.println("Please input TXT_PATH");
+        System.out.println("Please input txt path");
         String TXT_PATH = scanner.nextLine();
         File KEYWORD = new File(TXT_PATH);
         if (KEYWORD.isFile()) {
-            System.out.println("Pleace input KEYWORD");
+            System.out.println("Pleace input keyword");
             String keyword = scanner.nextLine();
             try (BufferedReader reader = new BufferedReader(new FileReader(TXT_PATH))) {
                 String line;
@@ -154,7 +154,8 @@ public class FileUtil {
         String fileName = scanner.nextLine();
         String filePath = path + File.separator + fileName;
         File myFile = new File(filePath);
-        boolean newFile = false;
+        boolean newFile;
+        newFile = false;
         try {
             newFile = myFile.createNewFile();
         } catch (IOException e) {
